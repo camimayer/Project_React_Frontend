@@ -44,6 +44,7 @@ function Login() {
 
             if (response.ok) {
                 localStorage.setItem('token', data.token);
+                localStorage.setItem('id', data.result.id);
                 toast.success('Connecté avec succès !', {
                     onClose: () => navigate('/')
                 });

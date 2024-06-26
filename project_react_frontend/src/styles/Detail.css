@@ -1,0 +1,37 @@
+.recipe-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  .recipe-card img {
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  .recipe-details {
+    padding: 15px 0;
+  }
+  
+  .recipe-category,
+  .recipe-ingredients,
+  .recipe-instructions {
+    margin: 10px 0;
+  }
+  
+  .recipe-category span,
+  .recipe-ingredients span,
+  .recipe-instructions span {
+    font-weight: bold;
+  }
+  
+  .recipe-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  

@@ -29,3 +29,7 @@
     background-color: white;
     color: #333;
 }
+
+img {
+    border-radius: 30px;
+}

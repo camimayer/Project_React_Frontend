@@ -3,11 +3,12 @@
 }
 
 .search-bar {
-    width: 100%;
+    width: 70%;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    align-self: center;
 }
 
 .recipes-container {
@@ -72,3 +73,10 @@
 .delete-button:hover {
     background-color: #c82333;
 }
+
+.star {
+    color: gold;
+    margin-left: 10px;
+    font-size: 1.2em;
+  }
+  
