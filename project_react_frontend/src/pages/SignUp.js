@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import '../styles/SignUp.css';
+import { signUp } from '../apiService';
 
 function SignUp() {
     const [username, setUsername] = useState('');
@@ -33,21 +34,12 @@ function SignUp() {
         }
 
         try {
-            const response = await fetch('http://localhost:3008/api/auth/signup', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, password }),
+            await signUp(username, password);
+            toast.success('Inscription réussie !', {
+                onClose: () => navigate('/login')
             });
-
-            if (response.ok) {
-                toast.success('Connecté avec succès !', {
-                    onClose: () => navigate('/login')
-                });
-            } else {
-                toast.error('Échec de l\'inscription');
-            }
         } catch (error) {
-            toast.error('Échec de l\'inscription');
+            toast.error(error.message || 'Échec de l\'inscription');
         }
     };
 

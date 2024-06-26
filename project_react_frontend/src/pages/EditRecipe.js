@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import '../styles/EditRecipe.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { fetchRecipeById, updateRecipe } from '../apiService';
 
 function RecipeForm() {
   const { id } = useParams();
@@ -17,14 +18,15 @@ function RecipeForm() {
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:3008/api/recipe/${id}`, {
-      headers: {
-        'authorization': `Bearer ${localStorage.getItem('token')}`
+    const loadRecipe = async () => {
+      try {
+        const data = await fetchRecipeById(id);
+        setRecipe(data);
+      } catch (error) {
+        console.error('Error fetching recipe:', error);
       }
-    })
-    .then(response => response.json())
-    .then(data => setRecipe(data))
-    .catch(error => console.error('Error fetching recipe:', error));
+    };
+    loadRecipe();
   }, [id]);
 
   const handleChange = (e) => {
@@ -50,34 +52,20 @@ function RecipeForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!validate()) {
       return;
     }
 
-    fetch(`http://localhost:3008/api/recipe/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'authorization': `Bearer ${localStorage.getItem('token')}`
-      },
-      body: JSON.stringify(recipe)
-    })
-    .then(async response => {
-      const data = await response.json();
-      if (!response.ok) {
-        toast.error(data.message || 'Error updating recipe');
-      } else {
-        toast.success(data.message || 'Recipe updated successfully');
-        navigate('/');
-      }
-    })
-    .catch(error => {
-      toast.error('Error updating recipe');
-      console.error('Error:', error);
-    });
+    try {
+      const data = await updateRecipe(id, recipe);
+      toast.success(data.message || 'Recipe updated successfully');
+      navigate('/');
+    } catch (error) {
+      toast.error(error.message || 'Error updating recipe');
+    }
   };
 
   return (

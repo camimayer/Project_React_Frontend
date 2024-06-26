@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import '../styles/Login.css';
 import { useNavigate } from 'react-router-dom';
+import { login } from '../apiService';
 
 function Login() {
     const [username, setUsername] = useState('');
@@ -32,27 +33,15 @@ function Login() {
             return;
         }
 
-        // Chamada para a API de autenticação
         try {
-            const response = await fetch('http://localhost:3008/api/auth/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, password }),
+            const data = await login(username, password);
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('id', data.result.id);
+            toast.success('Connecté avec succès !', {
+                onClose: () => navigate('/')
             });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                localStorage.setItem('token', data.token);
-                localStorage.setItem('id', data.result.id);
-                toast.success('Connecté avec succès !', {
-                    onClose: () => navigate('/')
-                });
-            } else {
-                toast.error(data.message || 'Échec de la connexion');
-            }
         } catch (error) {
-            toast.error('Échec de la connexion');
+            toast.error(error.message || 'Échec de la connexion');
         }
     };
 
