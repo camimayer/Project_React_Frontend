@@ -60,7 +60,7 @@ const RecipeList = () => {
                         <div className="recipe-details">
                             <h3>
                                 {recipe.name}
-                                {recipe.userID == userId && <span className="star">★</span>}
+                                {recipe.userID === userId && <span className="star">★</span>}
                             </h3>
                             <p>{recipe.category}</p>
                             <button className="modify-button" onClick={(e) => { e.stopPropagation(); navigate(`/edit/${recipe.id}`); }}>Modifier</button>
