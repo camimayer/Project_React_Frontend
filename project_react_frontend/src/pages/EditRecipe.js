@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import '../styles/EditRecipe.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { fetchRecipeById, updateRecipe } from '../apiService';
+import { fetchRecipeById, updateRecipe } from '../api';
 
 function RecipeForm() {
   const { id } = useParams();

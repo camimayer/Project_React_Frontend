@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import '../styles/Login.css';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../apiService';
+import { login } from '../api';
 
 function Login() {
     const [username, setUsername] = useState('');

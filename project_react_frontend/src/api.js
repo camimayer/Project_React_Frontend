@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3008/api';
+const API_URL = 'https://backendrecipes-ug65.onrender.com/api';
 
 export const fetchRecipes = async () => {
     const response = await fetch(`${API_URL}/recipe/`, {

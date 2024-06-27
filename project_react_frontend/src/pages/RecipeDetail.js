@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../styles/RecipeDetail.css';
-import { fetchRecipeById, fetchUserById } from '../apiService';
+import { fetchRecipeById, fetchUserById } from '../api';
 
 function RecipeCard() {
   const { id } = useParams();

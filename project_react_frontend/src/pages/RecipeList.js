@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/RecipeList.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { fetchRecipes, deleteRecipe } from '../apiService';
+import { fetchRecipes, deleteRecipe } from '../api';
 
 const RecipeList = () => {
     const [recipes, setRecipes] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
-    const userId = localStorage.getItem('id');
+    const userId = parseInt(localStorage.getItem('id'));
 
     const loadRecipes = async () => {
         try {

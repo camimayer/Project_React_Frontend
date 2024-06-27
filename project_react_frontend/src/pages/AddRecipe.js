@@ -43,12 +43,12 @@ function RecipeForm() {
     if (!validate()) {
       return;
     }
-    
+
     const recipeData = Object.fromEntries(
       Object.entries(recipe).filter(([_, value]) => value.trim() !== '')
     );
 
-    fetch('http://localhost:3008/api/recipe', {
+    fetch('https://backendrecipes-ug65.onrender.com/api/recipe', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
