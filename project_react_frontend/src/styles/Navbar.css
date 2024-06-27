@@ -33,3 +33,10 @@
 img {
     border-radius: 30px;
 }
+
+.logout-button{
+    background-color: rgb(234, 104, 4);
+}
+.logout-button:hover{
+    background-color: rgb(247, 82, 6);
+}

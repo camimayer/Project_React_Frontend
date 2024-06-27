@@ -28,15 +28,15 @@ function RecipeCard() {
   }
 
   return (
-    <div className="recipe-card">
-      <img src={recipe.imageUrl} alt={recipe.title} />
+    <div className="recipe-card">  
+      <img src={recipe.imageUrl} alt={recipe.name} />
+      <div className="recipe-title">{recipe.name}</div>
       <div className="recipe-details">
         <div className="recipe-category"><span>Category:</span> {recipe.category}</div>
         <div className="recipe-ingredients"><span>Ingredients:</span> {recipe.ingredients}</div>
         <div className="recipe-instructions"><span>Instructions:</span> {recipe.instructions}</div>
         <div className="recipe-instructions"><span>Created by:</span> {user.username}</div>
       </div>
-      <div className="recipe-title">{recipe.title}</div>
     </div>
   );
 }
